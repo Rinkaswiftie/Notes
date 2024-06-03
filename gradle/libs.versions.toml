@@ -11,6 +11,8 @@ roomRuntime = "2.6.1"
 roundedimageview = "2.3.0"
 sdpAndroid = "1.0.6"
 sspAndroid = "1.0.6"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
 
 [libraries]
 androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
@@ -25,6 +27,8 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRunti
 roundedimageview = { module = "com.makeramen:roundedimageview", version.ref = "roundedimageview" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
