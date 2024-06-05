@@ -1,6 +1,7 @@
 package com.rinka.notes.adapters;
 
 import android.annotation.SuppressLint;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
@@ -12,16 +13,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.rinka.notes.R;
 import com.rinka.notes.entities.Note;
+import com.rinka.notes.listeners.NotesListener;
 
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
     List<Note> notes;
+    NotesListener notesListener;
 
-    public NotesAdapter(List<Note> note) {
+    public NotesAdapter(List<Note> note,  NotesListener notesListener) {
         this.notes = note;
+        this.notesListener = notesListener;
     }
 
     @NonNull
@@ -33,6 +38,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         holder.setNote(notes.get(position));
+        holder.noteContainer.setOnClickListener(v -> notesListener.onNoteClicked(notes.get(position), position));
     }
 
     @Override
@@ -48,13 +54,16 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     static class NoteViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout noteContainer;
+        private RoundedImageView previewImage;
         TextView title, time, content;
+
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.note_preview_title);
             time = itemView.findViewById(R.id.note_preview_time);
             content = itemView.findViewById(R.id.note_preview_content);
             noteContainer = itemView.findViewById(R.id.note_item);
+            previewImage = itemView.findViewById(R.id.preview_image);
         }
 
         @SuppressLint("SetTextI18n")
@@ -70,6 +79,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
             int noteLength = noteText.length();
             content.setText(noteText.substring(0, Math.min(noteLength, 100)) + (noteLength > 100 ? "..." : ""));
             content.setTextColor(Color.parseColor(note.getTextColor()));
+            if (note.getImagePath() != null) {
+                previewImage.setImageBitmap(BitmapFactory.decodeFile(note.getImagePath()));
+                previewImage.setVisibility(View.VISIBLE);
+            } else {
+                previewImage.setVisibility(View.GONE);
+            }
         }
     }
 }

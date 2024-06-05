@@ -14,4 +14,5 @@
     <string name="note_color_1">Note color 1</string>
     <string name="note_color_2">Note color 2</string>
     <string name="note_color_4">Note color 4</string>
+    <string name="date">date</string>
 </resources>

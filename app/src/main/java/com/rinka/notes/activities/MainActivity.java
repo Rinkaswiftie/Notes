@@ -14,19 +14,23 @@ import com.rinka.notes.R;
 import com.rinka.notes.adapters.NotesAdapter;
 import com.rinka.notes.database.NotesDatabase;
 import com.rinka.notes.entities.Note;
+import com.rinka.notes.listeners.NotesListener;
 import com.rinka.notes.tasks.TaskRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NotesListener {
 
     private ImageView createNoteButton;
     private RecyclerView recyclerView;
     private List<Note> notes;
     private NotesAdapter notesAdapter;
 
+    int clickedNotePosition = -1;
+
     public static final int REQUEST_CODE_ADD_NOTE = 1;
+    public static final int REQUEST_CODE_UPDATE_NOTE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +46,20 @@ public class MainActivity extends AppCompatActivity {
         createNoteButton.setOnClickListener(v -> startActivityForResult(new Intent(getApplicationContext(), CreateNoteActivity.class), REQUEST_CODE_ADD_NOTE ));
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         notes = new ArrayList<Note>();
-        notesAdapter = new NotesAdapter(notes);
+        notesAdapter = new NotesAdapter(notes, this);
         recyclerView.setAdapter(notesAdapter);
 
         //call methods
         getNotes();
+    }
+
+    @Override
+    public void onNoteClicked(Note note, int position) {
+        clickedNotePosition = position;
+        Intent intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
+        intent.putExtra("isViewOrUpdate", true);
+        intent.putExtra("note", note);
+        startActivityForResult(intent, REQUEST_CODE_UPDATE_NOTE);
     }
 
     public void getNotes() {
