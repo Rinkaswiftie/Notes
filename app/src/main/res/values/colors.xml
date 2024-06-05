@@ -4,5 +4,15 @@
     <color name="primary_dark">#292929</color>
     <color name="color_accent">#F4B350</color>
     <color name="color_white">#B5B5B5</color>
+    <color name="off_white">#797878</color>
     <color name="search_background">#333333</color>
+    <color name="note_background">#333333</color>
+    <color name="miscellaneous_background">#212121</color>
+    <color name="note_color_default">#333333</color>
+    <color name="note_color_1">#ffe666</color>
+    <color name="note_color_2">#f5c27d</color>
+    <color name="note_color_3">#d5a6bd</color>
+    <color name="note_color_4">#b4a6d6</color>
+    <color name="note_color_5">#a4c2f4</color>
+    <color name="note_color_6">#afdb88</color>
 </resources>

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/main" xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/single_note" xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primary">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/_10sdp"
-        >
+        android:paddingBottom="@dimen/_10sdp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/create_note_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/_12sdp"
-            android:paddingTop="@dimen/_20sdp"
             android:animateLayoutChanges="true"
-            >
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingTop="@dimen/_20sdp">
+
             <ImageView
                 android:id="@+id/goBack"
                 android:layout_width="31dp"
@@ -38,47 +39,62 @@
                 app:layout_constraintRight_toRightOf="@id/create_note_container"
                 app:layout_constraintTop_toTopOf="@id/create_note_container"
                 app:tint="@color/color_white" />
+
             <EditText
                 android:id="@+id/note_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_50sdp"
-                android:hint="@string/note_title"
+                android:background="@null"
                 android:backgroundTint="@color/color_white"
-                app:layout_constraintTop_toBottomOf="@id/save_note"
+                android:fontFamily="@font/teachers_bold"
+                android:gravity="center_vertical"
+                android:hint="@string/note_title"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:textColor="@color/color_white"
+                android:textColorHint="@color/color_white"
+                android:textSize="@dimen/_20sdp"
                 app:layout_constraintRight_toRightOf="@id/create_note_container"
                 app:layout_constraintStart_toStartOf="@id/create_note_container"
-                android:fontFamily="@font/teachers_bold"
-                android:textColor="@color/color_white"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:background="@null"
-                android:textColorHint="@color/color_white"
-                android:imeOptions="actionDone"
-                android:textSize="@dimen/_20sdp"
-                android:gravity="center_vertical"
-                android:inputType="text"
-                />
-            <EditText
-                android:id="@+id/note_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/save_note" />
+
+            <TextView
+                android:id="@+id/created_at"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/notePrompt"
-                android:backgroundTint="@color/color_white"
-                app:layout_constraintTop_toBottomOf="@id/note_title"
-                app:layout_constraintRight_toRightOf="@id/create_note_container"
-                app:layout_constraintStart_toStartOf="@id/create_note_container"
-                android:includeFontPadding="false"
-                android:fontFamily="@font/teachers_regular"
-                android:textColor="@color/color_white"
-                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_5sdp"
                 android:background="@null"
-                android:textColorHint="@color/color_white"
-                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/teachers_bold"
                 android:gravity="top"
+                android:textColor="@color/off_white"
+                app:layout_constraintBottom_toTopOf="@id/note_content"
+                app:layout_constraintTop_toBottomOf="@id/note_title" />
+
+            <EditText
+                android:id="@+id/note_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginVertical="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@null"
+                android:backgroundTint="@color/off_white"
+                android:fontFamily="@font/teachers_regular"
+                android:gravity="top"
+                android:hint="@string/notePrompt"
+                android:includeFontPadding="false"
                 android:inputType="textMultiLine"
                 android:minHeight="@dimen/_100sdp"
-                />
+                android:textColor="@color/color_white"
+                android:textColorHint="@color/off_white"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintRight_toRightOf="@id/create_note_container"
+                app:layout_constraintStart_toStartOf="@id/create_note_container"
+                app:layout_constraintTop_toBottomOf="@id/created_at" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <include layout="@layout/miscellaneous_drawer"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/note_item"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/note_shape"
+    android:layout_marginHorizontal="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_12sdp"
+    android:padding="@dimen/_10sdp"
+    >
+    <TextView
+        android:id="@+id/note_preview_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/note_title"
+        android:fontFamily="@font/teachers_bold"
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/color_white"
+        android:background="@null"
+/>
+    <TextView
+        android:layout_marginTop="@dimen/_1sdp"
+        android:id="@+id/note_preview_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/note_title"
+        android:fontFamily="@font/teachers_regular"
+        android:textSize="@dimen/_6sdp"
+        android:textColor="@color/color_white"
+        android:background="@null"
+        />
+    <TextView
+        android:layout_marginTop="@dimen/_4sdp"
+        android:id="@+id/note_preview_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/note_title"
+        android:fontFamily="@font/teachers_regular"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/color_white"
+        android:background="@null"
+        />
+</LinearLayout>
